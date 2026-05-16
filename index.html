@@ -1,75 +1,1844 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arti Penderitaan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penderitaan Manusia — Pandangan Para Filsuf Kuno</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --ink: #0F0C08;
+    --ink-soft: #1C1710;
+    --parchment: #F5EDD8;
+    --parchment-dark: #E8D9B8;
+    --stone: #8C8070;
+    --stone-light: #B0A898;
+    --crimson: #8B2020;
+    --crimson-light: #C04040;
+    --marble: #D8D0C4;
+    --text-body: #2C2318;
+    --text-muted: #6B5E4A;
+  }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  html { scroll-behavior: smooth; }
 
-  <link rel="stylesheet" href="style.css">
+  body {
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(15,12,8,0.95);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'EB Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--stone-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,105,20,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(139,32,32,0.08) 0%, transparent 60%);
+  }
+
+  .hero-ornament {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero-ornament::before,
+  .hero-ornament::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark));
+  }
+
+  .hero-ornament::after {
+    background: linear-gradient(90deg, var(--gold-dark), transparent);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3.2rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--parchment);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    letter-spacing: 0.3em;
+    color: var(--stone);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  .hero-intro {
+    max-width: 680px;
+    font-size: 1.15rem;
+    color: var(--stone-light);
+    line-height: 2;
+    font-style: italic;
+  }
+
+  .scroll-indicator {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-dark);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: bob 2.5s ease-in-out infinite;
+  }
+
+  .scroll-indicator svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold-dark);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  /* ─── GREEK DIVIDER ─── */
+  .greek-divider {
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+
+  .greek-divider::before,
+  .greek-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 80px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3));
+  }
+
+  .greek-divider::before { left: 2rem; }
+  .greek-divider::after {
+    right: 2rem;
+    background: linear-gradient(270deg, transparent, rgba(201,168,76,0.3));
+  }
+
+  .greek-ornament {
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.5em;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* ─── INTRO PROSE ─── */
+  .intro-block {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .intro-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--gold-light);
+  }
+
+  .intro-block p {
+    font-size: 1.15rem;
+    color: var(--stone-light);
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin-right: 0.12em;
+    margin-top: 0.1em;
+    color: var(--gold);
+  }
+
+  /* ─── PHILOSOPHER CARD ─── */
+  .philosopher-section {
+    padding: 5rem 2rem;
+    max-width: 100%;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .philosopher-section:nth-child(even) .philosopher-inner {
+    flex-direction: row-reverse;
+  }
+
+  .philosopher-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+  }
+
+  .philosopher-portrait {
+    flex-shrink: 0;
+    width: 240px;
+    text-align: center;
+  }
+
+  .portrait-frame {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait-frame::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .portrait-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .portrait-era {
+    font-family: 'EB Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--stone);
+    font-style: italic;
+  }
+
+  .portrait-school {
+    margin-top: 0.75rem;
+    display: inline-block;
+    padding: 3px 12px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  .philosopher-content {
+    flex: 1;
+  }
+
+  .philosopher-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--parchment);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .content-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .philosopher-content p {
+    color: var(--stone-light);
+    margin-bottom: 1.4rem;
+    font-size: 1.05rem;
+  }
+
+  /* ─── PULLQUOTE ─── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem 1.5rem 2.5rem;
+    border-left: 3px solid var(--gold-dark);
+    background: rgba(201,168,76,0.04);
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '"';
+    position: absolute;
+    top: -0.8rem;
+    left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--parchment) !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.7;
+  }
+
+  .pullquote cite {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  /* ─── CONCEPT TAGS ─── */
+  .concept-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    padding: 4px 14px;
+    border: 1px solid rgba(201,168,76,0.25);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    text-transform: uppercase;
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+
+  .tag:hover {
+    border-color: var(--gold-dark);
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.05);
+  }
+
+  /* ─── KEY DOCTRINES ─── */
+  .doctrines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .doctrine-card {
+    padding: 1.25rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-top: 2px solid var(--gold-dark);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .doctrine-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .doctrine-card p {
+    font-size: 0.9rem;
+    color: var(--stone) !important;
+    margin-bottom: 0 !important;
+    line-height: 1.6;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-section {
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 5rem 2rem;
+  }
+
+  .timeline-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header p {
+    color: var(--stone);
+    font-style: italic;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.4) 10%, rgba(201,168,76,0.4) 90%, transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -3rem;
+    top: 0.3rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold-dark);
+    border: 2px solid var(--ink);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+  }
+
+  .timeline-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--parchment);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-body {
+    font-size: 0.95rem;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* ─── SCHOOLS COMPARISON ─── */
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .school-card {
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .school-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .school-card.stoic::before { background: var(--gold-dark); }
+  .school-card.epicurean::before { background: var(--stone); }
+  .school-card.platonic::before { background: var(--crimson); }
+  .school-card.skeptic::before { background: rgba(201,168,76,0.5); }
+
+  .school-card:hover { border-color: rgba(201,168,76,0.3); }
+
+  .school-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .school-card.stoic .school-name { color: var(--gold); }
+  .school-card.epicurean .school-name { color: var(--stone-light); }
+  .school-card.platonic .school-name { color: var(--crimson-light); }
+  .school-card.skeptic .school-name { color: var(--gold-light); }
+
+  .school-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--parchment);
+    margin-bottom: 0.75rem;
+  }
+
+  .school-card p {
+    font-size: 0.95rem;
+    color: var(--stone);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .school-tenets {
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .school-tenets li {
+    font-size: 0.85rem;
+    color: var(--stone);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .school-tenets li::before {
+    content: '◆';
+    font-size: 0.4rem;
+    color: var(--gold-dark);
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── COMPARATIVE TABLE ─── */
+  .compare-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  table.compare thead tr {
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+  }
+
+  table.compare th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    padding: 1rem 1.25rem;
+    text-align: left;
+  }
+
+  table.compare td {
+    padding: 0.9rem 1.25rem;
+    color: var(--stone-light);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  table.compare tr:hover td {
+    background: rgba(201,168,76,0.03);
+  }
+
+  table.compare td:first-child {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--parchment);
+    white-space: nowrap;
+  }
+
+  /* ─── GREEK TERMS ─── */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .term-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(255,255,255,0.015);
+  }
+
+  .term-greek {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .term-latin {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .term-def {
+    font-size: 0.9rem;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  /* ─── CLOSING ESSAY ─── */
+  .essay-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .essay-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .essay-section p {
+    font-size: 1.1rem;
+    color: var(--stone-light);
+    margin-bottom: 1.5rem;
+    line-height: 2;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dark);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .footer-body {
+    font-size: 0.85rem;
+    color: var(--stone);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .footer-line {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(201,168,76,0.25);
+    font-size: 0.75rem;
+  }
+
+  /* ─── ANIMATION ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .philosopher-inner {
+      flex-direction: column !important;
+      gap: 2rem;
+    }
+
+    .philosopher-portrait {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .portrait-frame {
+      width: 100px;
+      height: 100px;
+      font-size: 2rem;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .nav-links { display: none; }
+
+    .hero-title { font-size: 2.8rem; }
+  }
+</style>
 </head>
 <body>
 
-  <header class="hero">
-    <div class="overlay"></div>
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">Philosophia Antiqua</div>
+  <ul class="nav-links">
+    <li><a href="#intro">Pengantar</a></li>
+    <li><a href="#filsuf">Para Filsuf</a></li>
+    <li><a href="#aliran">Aliran Pemikiran</a></li>
+    <li><a href="#timeline">Kronologi</a></li>
+    <li><a href="#perbandingan">Perbandingan</a></li>
+    <li><a href="#istilah">Istilah Yunani</a></li>
+    <li style="border-left:1px solid rgba(201,168,76,0.2); padding-left:2rem; margin-left:0.5rem;">
+      <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.1em; color:var(--gold-dark);">Irfan Afandy</span>
+    </li>
+  </ul>
+</nav>
 
-    <nav>
-      <div class="logo">PHILOSOPHY</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ornament">Philosophia Antiqua</div>
+  <h1 class="hero-title">
+    Penderitaan<br><em>Manusia</em>
+  </h1>
+  <p class="hero-subtitle">Dalam Pandangan Para Filsuf Zaman Kuno &nbsp;•&nbsp; Dari Socrates hingga Marcus Aurelius</p>
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;justify-content:center;">
+    <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:0.75rem;color:var(--gold);">IA</div>
+    <div style="text-align:left;">
+      <div style="font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;color:var(--gold-light);">Irfan Afandy</div>
+      <div style="font-family:'EB Garamond',serif;font-size:0.8rem;font-style:italic;color:var(--stone);">Penulis &amp; </div>
+    </div>
+  </div>
+  <p class="hero-intro">
+    Selama ribuan tahun, manusia bertanya: mengapa kita menderita? Para pemikir besar dari Athena, Roma, hingga Alexandria merumuskan jawaban-jawaban yang hingga kini masih menggema — mengubah cara kita memahami rasa sakit, kehilangan, dan nasib.
+  </p>
+  <div class="scroll-indicator">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Telusuri
+  </div>
+</div>
 
-      <ul>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#philosophers">Filsuf</a></li>
-        <li><a href="#quotes">Kutipan</a></li>
-      </ul>
-    </nav>
+<!-- INTRO -->
+<div id="intro" class="greek-divider"><span class="greek-ornament">⊕ ✦ ⊕</span></div>
 
-    <div class="hero-content">
-      <h1>
-        Arti Penderitaan
-        Menurut Para Filsuf
-      </h1>
+<div class="intro-block fade-in">
+  <h2>Duri dalam Daging Peradaban</h2>
+  <p class="drop-cap">
+    Penderitaan adalah teman setia umat manusia sejak pertama kali pikiran mampu menyadari dirinya sendiri. Jauh sebelum psikologi modern, neurosains, atau teologi terorganisir, para filsuf Yunani dan Romawi kuno telah duduk bersama pertanyaan paling fundamental: mengapa manusia menderita, dari mana sumber penderitaan itu berasal, dan bagaimana cara menghadapinya dengan bermartabat.
+  </p>
+  <p>
+    Dalam tradisi filsafat Barat, penderitaan (<em>pathos</em>, <em>dolor</em>, <em>lype</em>) bukan sekadar pengalaman biologis — ia adalah jendela menuju hakikat jiwa, cermin moralitas, dan batu ujian kebijaksanaan. Setiap mazhab besar merumuskan teori penderitaan yang berbeda: Sokrates melihatnya sebagai buah ketidaktahuan, Plato sebagai beban jiwa yang terperangkap materi, Aristoteles sebagai penanda ketidakvirtuan, Epikuros sebagai produk nafsu yang keliru, dan kaum Stoa sebagai ujian pikiran atas apa yang ada di luar kendali kita.
+  </p>
+  <p>
+    Halaman ini menelusuri dengan cermat pandangan masing-masing pemikir besar — tidak hanya definisi penderitaan menurut mereka, tetapi juga diagnosis akar masalahnya, tawaran solusinya, dan relevansinya bagi kehidupan manusia hingga hari ini.
+  </p>
+</div>
+
+<!-- ══════════════════════════════ -->
+<!--       PARA FILSUF              -->
+<!-- ══════════════════════════════ -->
+
+<div id="filsuf" class="greek-divider"><span class="greek-ornament">⊕ ✦ ⊕</span></div>
+
+<!-- 1. SOCRATES -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Σ</div>
+      <div class="portrait-name">Socrates</div>
+      <div class="portrait-era">470 – 399 SM · Athena</div>
+      <div class="portrait-school">Sokratik</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Socrates: Penderitaan sebagai Buah Kebodohan</h3>
+      <p class="content-subtitle">Ignorantia Est Radix Doloris — Ketidaktahuan adalah Akar Penderitaan</p>
 
       <p>
-        Menjelajahi bagaimana penderitaan membentuk
-        manusia menurut pemikiran filsafat klasik.
+        Socrates, yang tidak pernah menulis satu kata pun namun mempengaruhi seluruh tradisi filsafat Barat, memandang penderitaan manusia terutama sebagai konsekuensi dari ketidaktahuan (<em>agnoia</em>). Baginya, manusia menderita bukan karena nasib buruk atau kehendak para dewa yang kejam, melainkan karena mereka tidak mengenal diri sendiri dan tidak memahami apa yang benar-benar baik.
       </p>
 
-      <a href="#philosophers" class="btn">
-        Mulai Membaca
-      </a>
-    </div>
-  </header>
+      <p>
+        Ajaran paling terkenal Socrates dalam konteks ini adalah paradoks moral: <em>tidak ada seorang pun yang berbuat jahat secara sukarela</em>. Setiap tindakan yang menghasilkan penderitaan — baik bagi diri sendiri maupun orang lain — lahir dari ketidaktahuan tentang apa yang sesungguhnya baik. Manusia yang berbuat jahat atau hidup tidak bermoral adalah manusia yang secara keliru mengira bahwa tindakan itu mendatangkan kebaikan, kenikmatan, atau keuntungan. Kesalahan kognitif ini adalah sumber segala penderitaan moral.
+      </p>
 
-  <section id="about" class="section">
-    <h2>Tentang Website</h2>
+      <div class="pullquote">
+        <p>Kehidupan yang tidak diuji tidak layak untuk dijalani.</p>
+        <cite>Socrates, dalam Apologi karya Plato (38a)</cite>
+      </div>
 
-    <p>
-      Website ini membahas makna penderitaan menurut
-      para filsuf kuno dan modern seperti Marcus Aurelius,
-      Nietzsche, Epictetus, dan Schopenhauer.
-    </p>
-  </section>
+      <p>
+        Dalam dialog-dialog Platonis yang merekam ajaran Socrates, kita melihat bagaimana ia menyamakan jiwa yang tidak terdidik dengan jiwa yang sakit. Penderitaan jiwa (<em>psyche</em>) jauh lebih buruk dari penderitaan tubuh. Seseorang yang menderita secara fisik namun memiliki jiwa yang tercerahkan masih lebih baik kondisinya dibanding seseorang yang raganya sehat namun jiwanya penuh ketidaktahuan, keserakahan, dan nafsu yang tak terkendali.
+      </p>
 
-  <section id="philosophers" class="section">
-    <h2>Para Filsuf</h2>
+      <p>
+        Metode Sokratik — percakapan bertanya-jawab yang terkenal dengan nama <em>elenchus</em> — justru dirancang untuk mengungkap penderitaan tersembunyi ini. Ketika Socrates bertanya "apa itu keberanian?" atau "apa itu keadilan?" kepada lawan bicaranya, tujuannya bukan sekadar mendefinisikan konsep. Ia ingin memperlihatkan bahwa kita hidup dalam ilusi pengetahuan yang palsu, dan ilusi itulah yang menghalangi kita dari hidup yang sejati dan bebas penderitaan.
+      </p>
 
-    <div class="cards">
+      <p>
+        Kematian Socrates sendiri menjadi demonstrasi paling dramatis dari pandangannya: ia memilih mati ketimbang mengkhianati pencarian kebijaksanaan. Baginya, takut mati adalah bentuk ketidaktahuan yang paling mendasar — mengira bahwa kematian adalah sesuatu yang buruk, padahal kita sama sekali tidak tahu apakah ia buruk atau baik. Penderitaan akibat ketakutan pada kematian, demikian Socrates, adalah penderitaan yang dibuat-buat sendiri oleh pikiran yang tidak bijak.
+      </p>
 
-      <div class="card fade-in">
-        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1200&auto=format&fit=crop" alt="Marcus Aurelius">
-
-        <div class="card-content">
-          <h3>Marcus Aurelius</h3>
-
-          <p>
-            Penderitaan muncul dari persepsi manusia terhadap kejadian.
-          </p>
+      <div class="doctrines-grid">
+        <div class="doctrine-card">
+          <h4>Akar Penderitaan</h4>
+          <p>Ketidaktahuan (<em>agnoia</em>) tentang hakikat kebaikan sejati</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Wujud Penderitaan</h4>
+          <p>Jiwa yang tidak diperiksa dan hidup tanpa kebijaksanaan</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Solusi</h4>
+          <p>Pemeriksaan diri terus-menerus melalui dialog dan filsafat</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Tujuan Akhir</h4>
+          <p>Jiwa yang tercerahkan dan kehidupan yang dijalani dengan penuh kesadaran</p>
         </div>
       </div>
 
-      <div class="card fade-in">
+      <div class="concept-tags">
+        <span class="tag">Agnoia</span>
+        <span class="tag">Elenchus</span>
+        <span class="tag">Psyche</span>
+        <span class="tag">Arete</span>
+        <span class="tag">Paradoks Moral</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. PLATO -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Π</div>
+      <div class="portrait-name">Plato</div>
+      <div class="portrait-era">428 – 348 SM · Athena</div>
+      <div class="portrait-school">Platonisme</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Plato: Jiwa yang Terperangkap dalam Dunia Bayangan</h3>
+      <p class="content-subtitle">Penderitaan sebagai Kondisi Eksistensial Jiwa Fana</p>
+
+      <p>
+        Murid Socrates yang paling berbakat ini mengembangkan pandangan gurunya ke dalam sistem metafisika yang jauh lebih luas. Bagi Plato, penderitaan manusia memiliki akar yang lebih dalam dari sekadar ketidaktahuan intelektual — ia berakar pada kondisi ontologis jiwa yang terjebak dalam tubuh fana dan dunia material yang selalu berubah.
+      </p>
+
+      <p>
+        Dalam karyanya <em>Phaedo</em>, Plato melalui tokoh Socrates menggambarkan tubuh (<em>soma</em>) sebagai penjara bagi jiwa (<em>psyche</em>). Jiwa, dalam pandangan Platonis, berasal dari dunia Forma (<em>kosmos noetos</em>) — dunia ideal yang kekal, sempurna, dan tidak berubah. Ketika jiwa turun dan menghuni tubuh manusia, ia mengalami semacam amnesia kosmis: lupa akan pengetahuan sejati yang pernah dimilikinya. Penderitaan manusia adalah buah langsung dari kondisi "terjebak" ini.
+      </p>
+
+      <div class="pullquote">
+        <p>Hanya ada satu kebaikan, yaitu pengetahuan, dan hanya ada satu kejahatan, yaitu kebodohan.</p>
+        <cite>Plato, Apologi Socrates</cite>
+      </div>
+
+      <p>
+        Alegori Gua (<em>Allegoria Spilaiou</em>) dalam <em>Politeia</em> (Republik) adalah visualisasi paling kuat dari pandangan Plato tentang penderitaan. Manusia yang tidak berfilsafat digambarkan sebagai tawanan yang duduk membelakangi cahaya di dalam gua, menyangka bahwa bayangan di dinding gua adalah realitas sesungguhnya. Penderitaan terdalam manusia adalah penderitaan epistemologis: hidup dalam ilusi, mengira bayangan sebagai kebenaran.
+      </p>
+
+      <p>
+        Lebih lanjut, Plato dalam <em>Phaedrus</em> menggambarkan jiwa sebagai kusir yang mengemudikan dua kuda: satu kuda baik (bagian rasional dan semangat jiwa yang terdidik) dan satu kuda liar (nafsu dan hasrat hewani). Penderitaan muncul ketika kusir kalah, ketika kuda liar — hasrat (<em>epithymia</em>) akan kenikmatan fisik, kemewahan, seks, dan kesenangan duniawi — mengendalikan jiwa. Hidup yang dikuasai nafsu adalah hidup yang dipenuhi penderitaan, karena nafsu tidak pernah puas: setiap pemuasan hanya menghasilkan nafsu yang lebih besar.
+      </p>
+
+      <p>
+        Dalam <em>Philebus</em>, Plato melakukan analisis canggih tentang kesenangan dan rasa sakit. Ia mengidentifikasi bahwa banyak kesenangan yang kita kejar sesungguhnya adalah palsu — bukan kesenangan sejati, melainkan sekadar penghilangan rasa sakit sementara. Ini menciptakan siklus penderitaan yang tak berujung: manusia berlari dari rasa sakit ke kesenangan, lalu kembali ke rasa sakit yang lebih dalam, tanpa pernah menemukan kebahagiaan sejati.
+      </p>
+
+      <p>
+        Jalan keluar yang ditawarkan Plato adalah melalui filsafat sebagai latihan kematian (<em>melete thanatou</em>) — secara bertahap melepaskan ikatan jiwa dari tubuh dan dunia material, serta mengarahkan pikiran menuju dunia Forma yang kekal. Ini bukan penyangkalan diri yang menyiksa, melainkan pembebasan jiwa secara progresif dari penjara indera.
+      </p>
+
+      <div class="doctrines-grid">
+        <div class="doctrine-card">
+          <h4>Dualisme Jiwa-Tubuh</h4>
+          <p>Jiwa abadi terperangkap dalam tubuh fana yang menjadi sumber kesengsaraan</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Penderitaan Epistemologis</h4>
+          <p>Hidup dalam ilusi bayangan, jauh dari kebenaran dunia Forma</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Tirani Nafsu</h4>
+          <p>Kuda liar hasrat yang mengalahkan kusir akal menciptakan jiwa yang sakit</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Anamnesis</h4>
+          <p>Belajar adalah mengingat kembali — penderitaan timbul karena jiwa lupa asal-usulnya</p>
+        </div>
+      </div>
+
+      <div class="concept-tags">
+        <span class="tag">Allegoria Spilaiou</span>
+        <span class="tag">Soma-Sema</span>
+        <span class="tag">Forma Ideal</span>
+        <span class="tag">Epithymia</span>
+        <span class="tag">Anamnesis</span>
+        <span class="tag">Melete Thanatou</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. ARISTOTELES -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Α</div>
+      <div class="portrait-name">Aristoteles</div>
+      <div class="portrait-era">384 – 322 SM · Stagira</div>
+      <div class="portrait-school">Peripatetik</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Aristoteles: Penderitaan, Kebajikan, dan Jalan Tengah</h3>
+      <p class="content-subtitle">Penderitaan sebagai Sinyal Absennya Eudaimonia</p>
+
+      <p>
+        Aristoteles, murid Plato yang kemudian mendirikan Lyceum-nya sendiri, menolak dualisme guru besarnya. Bagi Aristoteles, jiwa bukan penjara dalam tubuh — ia adalah <em>bentuk</em> tubuh (<em>eidos tou somatos</em>). Keduanya tidak dapat dipisahkan selama manusia hidup. Dengan kerangka pikir ini, pendekatan Aristoteles terhadap penderitaan menjadi jauh lebih bersifat psikologis, etis, dan praktis.
+      </p>
+
+      <p>
+        Konsep utama Aristoteles dalam memahami penderitaan adalah <em>eudaimonia</em> — sering diterjemahkan sebagai "kebahagiaan" namun lebih tepat dipahami sebagai "kehidupan yang berkembang sempurna" atau "kesejahteraan jiwa yang utuh". Penderitaan, dalam kerangka Aristotelian, adalah kondisi yang muncul ketika manusia gagal mewujudkan <em>eudaimonia</em> — ketika mereka hidup di bawah potensi kodrat manusiawi mereka yang tertinggi.
+      </p>
+
+      <div class="pullquote">
+        <p>Kebahagiaan bergantung pada diri kita sendiri.</p>
+        <cite>Aristoteles, Nikomachean Ethics</cite>
+      </div>
+
+      <p>
+        Dalam <em>Nikomachean Ethics</em>, Aristoteles mengembangkan doktrin jalan tengah (<em>mesotes</em>) yang relevan langsung dengan penderitaan. Setiap kebajikan (<em>arete</em>) adalah titik tengah antara dua ekstrem yang masing-masing menjadi sumber penderitaan. Keberanian adalah titik tengah antara kepengecutan (sumber penderitaan akibat rasa takut berlebihan) dan kecerobohan (sumber penderitaan akibat tidak menghitung risiko). Kemurahan hati berada antara kekikiran dan pemborosan. Seseorang yang hidup dalam ekstrem akan selalu menderita karena karakternya cacat.
+      </p>
+
+      <p>
+        Aristoteles juga sangat memperhatikan peran <em>pathos</em> (emosi/gairah) dalam penderitaan. Berbeda dengan kaum Stoa yang akan datang — yang menyeru pada penghapusan emosi — Aristoteles berpendapat bahwa emosi bukan musuh. Masalahnya bukan memiliki emosi, melainkan memiliki emosi yang tidak proporsional, tidak tepat waktu, tidak tepat sasaran, atau tidak tepat intensitasnya. Orang yang marah terhadap hal yang tidak layak dimarahi, atau bersedih secara berlebihan atas kerugian kecil, menderita bukan karena emosinya — melainkan karena emosinya tidak diatur oleh akal yang terlatih.
+      </p>
+
+      <p>
+        Dimensi sosial penderitaan juga sangat ditekankan Aristoteles. Manusia adalah <em>zoon politikon</em> — makhluk yang secara kodrati bersifat sosial-politik. Hidup terisolasi dari komunitas, tanpa persahabatan sejati (<em>philia</em>), tanpa partisipasi dalam kehidupan polis, adalah salah satu bentuk penderitaan yang paling dalam. Aristoteles mendedikasikan dua bab penuh dari <em>Nikomachean Ethics</em> untuk membahas persahabatan, karena ia percaya bahwa persahabatan sejati — bukan persahabatan karena keuntungan atau kesenangan, melainkan karena kebajikan bersama — adalah komponen esensial dari hidup tanpa penderitaan mendalam.
+      </p>
+
+      <p>
+        Aristoteles juga mengakui bahwa keberuntungan (<em>tyche</em>) memainkan peran dalam penderitaan manusia. Kemiskinan ekstrem, sakit keras, kehilangan orang-orang terkasih — semua ini dapat secara nyata menghalangi seseorang dari eudaimonia, bahkan jika karakternya baik. Pandangan ini lebih realistis dibanding guru-gurunya dan mengakui bahwa tidak semua penderitaan adalah hasil dari kesalahan moral manusia itu sendiri.
+      </p>
+
+      <div class="doctrines-grid">
+        <div class="doctrine-card">
+          <h4>Eudaimonia</h4>
+          <p>Penderitaan adalah absennya kehidupan yang berkembang sempurna sesuai kodrat manusia</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Mesotes</h4>
+          <p>Hidup di ekstrem — baik defisiensi maupun ekses — menghasilkan karakter cacat dan penderitaan</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Pathos Tak Teratur</h4>
+          <p>Emosi yang tidak proporsional dan tidak terarahkan oleh akal adalah sumber kesengsaraan</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Philia</h4>
+          <p>Ketiadaan persahabatan sejati dan komunitas menjadi penderitaan yang mendarah-daging</p>
+        </div>
+      </div>
+
+      <div class="concept-tags">
+        <span class="tag">Eudaimonia</span>
+        <span class="tag">Mesotes</span>
+        <span class="tag">Arete</span>
+        <span class="tag">Pathos</span>
+        <span class="tag">Philia</span>
+        <span class="tag">Tyche</span>
+        <span class="tag">Zoon Politikon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. EPIKUROS -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Ε</div>
+      <div class="portrait-name">Epikuros</div>
+      <div class="portrait-era">341 – 270 SM · Samos</div>
+      <div class="portrait-school">Epikureanisme</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Epikuros: Pembedahan Nafsu dan Jalan Menuju Ataraxia</h3>
+      <p class="content-subtitle">Penderitaan Lahir dari Keinginan yang Keliru dan Ketakutan yang Tidak Perlu</p>
+
+      <p>
+        Tidak ada filsuf kuno yang lebih disalahpahami dari Epikuros. Kata "Epikurean" dalam bahasa populer sering berarti "pencinta kenikmatan mewah" — namun Epikuros yang sesungguhnya hidup sangat sederhana, makan roti dan keju, dan berpendapat bahwa penderitaan manusia justru lahir dari mengejar kesenangan yang salah jenis.
+      </p>
+
+      <p>
+        Epikuros membangun sistem etikanya di atas fondasi hedonisme yang disiplin. Kesenangan (<em>hedone</em>) memang tujuan hidup — tetapi bukan kesenangan aktif yang hiruk-pikuk, melainkan <em>ataraxia</em> (ketenangan jiwa yang bebas dari gangguan) dan <em>aponia</em> (bebas dari rasa sakit fisik). Penderitaan, dalam pandangan Epikuros, muncul dari dua sumber utama: keinginan yang tidak perlu dan ketakutan yang tidak berdasar.
+      </p>
+
+      <div class="pullquote">
+        <p>Kematian bukan apa-apa bagi kita: ketika kita ada, kematian belum datang; ketika kematian datang, kita tidak lagi ada.</p>
+        <cite>Epikuros, Surat kepada Menoikeus</cite>
+      </div>
+
+      <p>
+        Epikuros membagi keinginan manusia ke dalam taksonomi yang sangat analitis: (1) <em>Keinginan alami dan perlu</em> — makanan, minuman, perlindungan dari cuaca, persahabatan — yang ketika terpenuhi menghasilkan kesenangan sejati dan mudah dipuaskan; (2) <em>Keinginan alami namun tidak perlu</em> — makanan mewah, seks berlebihan, kenyamanan ekstra — yang bisa meningkatkan kesenangan namun tidak esensial dan bisa menyebabkan penderitaan jika tidak terpenuhi; (3) <em>Keinginan tidak alami dan tidak perlu</em> — kekayaan tak terbatas, ketenaran, kekuasaan politik — yang sama sekali kosong, tidak pernah membawa kepuasan sejati, dan menjadi sumber penderitaan paling besar bagi manusia.
+      </p>
+
+      <p>
+        Kategori ketiga inilah yang Epikuros pandang sebagai musuh utama kebahagiaan manusia. Ambisi untuk kaya, terkenal, dan berkuasa menciptakan penderitaan berlipat ganda: penderitaan ketika belum tercapai (kecemasan, iri, frustrasi), penderitaan dalam proses mencapainya (kerja keras yang tidak bahagia, pengkhianatan, kompromi nilai), dan penderitaan setelah tercapai (ketakutan kehilangan, persaingan dengan sesama, kekosongan makna).
+      </p>
+
+      <p>
+        Epikuros juga memberikan perhatian luar biasa pada dua ketakutan besar yang menurutnya merupakan sumber penderitaan manusia universal: ketakutan pada dewa-dewa dan ketakutan pada kematian. Keduanya ia anggap tidak berdasar. Dewa-dewa (jika ada) tidak tertarik mengurusi urusan manusia — mereka hidup dalam ketenangan sempurna. Dan kematian tidak perlu ditakuti karena ia sekadar ketiadaan: tidak ada "aku" yang bisa merasakan rasa sakit setelah mati.
+      </p>
+
+      <p>
+        Solusi Epikuros adalah hidup dalam komunitas kecil yang penuh persahabatan sejati, jauh dari hiruk-pikuk politik dan ambisi duniawi — yang ia contohkan sendiri dalam komunitas "Kebun" (<em>Kepos</em>) yang ia dirikan di Athena. Di sana, pria dan wanita, merdeka dan budak, hidup bersama dalam kesederhanaan, saling mendukung, dan mencapai <em>ataraxia</em> bersama-sama.
+      </p>
+
+      <div class="doctrines-grid">
+        <div class="doctrine-card">
+          <h4>Ataraxia</h4>
+          <p>Ketenangan jiwa bebas gangguan sebagai puncak kesenangan dan lawan penderitaan</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Taksonomi Keinginan</h4>
+          <p>Memisahkan nafsu perlu dari nafsu kosong yang menghasilkan penderitaan sia-sia</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Bebas dari Ketakutan</h4>
+          <p>Menolak ketakutan pada dewa dan kematian sebagai sumber penderitaan palsu</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Philia dan Komunitas</h4>
+          <p>Persahabatan dan komunitas intim sebagai obat paling mujarab penderitaan</p>
+        </div>
+      </div>
+
+      <div class="concept-tags">
+        <span class="tag">Ataraxia</span>
+        <span class="tag">Aponia</span>
+        <span class="tag">Hedone</span>
+        <span class="tag">Tetrapharmakos</span>
+        <span class="tag">Kepos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. STOA -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Ζ</div>
+      <div class="portrait-name">Zeno & Kaum Stoa</div>
+      <div class="portrait-era">334 SM – 180 M · Kitium hingga Roma</div>
+      <div class="portrait-school">Stoikisme</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Stoikisme: Penderitaan sebagai Produk Penilaian yang Keliru</h3>
+      <p class="content-subtitle">Epictetus · Seneca · Marcus Aurelius · Zeno dari Citium</p>
+
+      <p>
+        Stoikisme adalah mazhab filsafat kuno yang paling berpengaruh dalam pemikiran tentang penderitaan — dan yang paling memiliki resonansi dengan psikologi kontemporer, terutama Terapi Kognitif-Perilaku (CBT). Didirikan oleh Zeno dari Citium sekitar 300 SM, dan mencapai puncak kemegahannya dalam tulisan-tulisan Epictetus, Seneca, dan Marcus Aurelius, Stoikisme memiliki pandangan yang radikal: penderitaan manusia adalah produk dari penilaian (<em>krisis</em>) yang keliru, bukan dari peristiwa itu sendiri.
+      </p>
+
+      <p>
+        Ajaran paling fundamental Stoikisme dalam konteks penderitaan dapat diringkas dalam satu dikotomi: <em>dikotomi kendali</em> (<em>prohairesis</em> vs <em>ta ektos</em>). Ada hal-hal yang berada dalam kendali kita — penilaian kita, niat kita, reaksi kita, nilai-nilai kita — dan ada hal-hal yang tidak berada dalam kendali kita — tubuh kita, harta benda, reputasi, apa yang dipikirkan orang lain tentang kita, dan bahkan kematian. Penderitaan, tegas kaum Stoa, muncul dari satu kesalahan mendasar: menginginkan atau takut pada hal-hal yang tidak berada dalam kendali kita.
+      </p>
+
+      <div class="pullquote">
+        <p>Bukan peristiwa-peristiwa yang menyusahkan manusia, melainkan penilaian tentang peristiwa-peristiwa itu.</p>
+        <cite>Epictetus, Enchiridion, §5</cite>
+      </div>
+
+      <p>
+        <strong>Epictetus</strong> (50–135 M), mantan budak yang menjadi filsuf besar, mengembangkan doktrin ini dengan intensitas yang tiada tara. Karena pernah hidup dalam kondisi perbudakan yang ekstrem, ia memiliki otoritas hidup yang luar biasa ketika bicara tentang penderitaan. Baginya, sang tuan dapat mengambil tubuhnya, tetapi tidak dapat menyentuh pikiran dan penilaian (<em>hegemonikon</em>)-nya. Penderitaan terdalam manusia bukan pada perbudakan fisik, melainkan pada perbudakan pikiran terhadap nafsu, ketakutan, dan penilaian yang keliru.
+      </p>
+
+      <p>
+        <strong>Seneca</strong> (4 SM–65 M), filsuf-negarawan Roma yang hidupnya penuh paradoks (kaya raya namun menulis tentang kesederhanaan, pelayan kaisur Nero namun mengajarkan kebebasan jiwa), memberikan kontribusi penting melalui konsep <em>praemeditatio malorum</em> — meditasi atas hal-hal buruk yang mungkin terjadi. Ini bukan pesimisme, melainkan terapi mental: dengan membayangkan kehilangan yang paling kita takuti (kematian orang tercinta, kebangkrutan, sakit), kita mengurangi kekuatan penderitaan atas jiwa kita ketika hal itu benar-benar terjadi.
+      </p>
+
+      <div class="pullquote">
+        <p>Bertumbuhlah dari segala penderitaan. Biarkan ia mengajarmu ketangguhan.</p>
+        <cite>Seneca, Surat-surat Moral kepada Lucilius</cite>
+      </div>
+
+      <p>
+        <strong>Marcus Aurelius</strong> (121–180 M), kaisar-filsuf yang memerintah Kekaisaran Romawi di tengah perang, wabah, dan pengkhianatan, meninggalkan <em>Meditations</em> (atau <em>Ta Eis Heauton</em> — "Kepada Diri Sendiri") — karya paling personal dan emosional dari seluruh tradisi Stoik. Dalam catatan harian pribadi yang tidak pernah ia niatkan untuk dibaca orang lain, Marcus berjuang setiap hari melawan kecemasan, kelelahan, dan godaan untuk membalaskan dendam. Ia mengingatkan dirinya sendiri berulang-ulang: penderitaan manusia lahir dari melupakan alam semesta yang lebih besar, dari terlalu menganggap serius hal-hal sementara, dari lupa bahwa semuanya akan berlalu.
+      </p>
+
+      <p>
+        Kaum Stoa juga membedakan antara <em>eupatheia</em> (emosi yang rasional dan sehat, seperti kegembiraan, kehati-hatian, dan keinginan akan kebajikan) dan <em>pathe</em> (emosi irasional yang menjadi sumber penderitaan: ketakutan, keserakahan, kesenangan berlebihan, dan kesedihan mendalam). Tujuan latihan Stoik bukan menghapus emosi — manusia dari batu tidak lebih bahagia — melainkan mentransformasi emosi irasional menjadi emosi yang rasional melalui latihan penilaian yang terus-menerus.
+      </p>
+
+      <div class="doctrines-grid">
+        <div class="doctrine-card">
+          <h4>Dikotomi Kendali</h4>
+          <p>Penderitaan timbul dari menginginkan atau menolak hal-hal di luar kendali kita</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Penilaian (Krisis)</h4>
+          <p>Bukan peristiwa yang menyakitkan, melainkan penilaian kita tentang peristiwa itu</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Praemeditatio Malorum</h4>
+          <p>Meditasi atas kemungkinan terburuk sebagai vaksin terhadap penderitaan mendalam</p>
+        </div>
+        <div class="doctrine-card">
+          <h4>Amor Fati</h4>
+          <p>Mencintai nasib sebagaimana adanya — termasuk semua kesulitan dan kehilangan</p>
+        </div>
+      </div>
+
+      <div class="concept-tags">
+        <span class="tag">Prohairesis</span>
+        <span class="tag">Hegemonikon</span>
+        <span class="tag">Eupatheia</span>
+        <span class="tag">Praemeditatio Malorum</span>
+        <span class="tag">Amor Fati</span>
+        <span class="tag">Logos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. HERACLITUS -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Η</div>
+      <div class="portrait-name">Heraclitus</div>
+      <div class="portrait-era">535 – 475 SM · Efesos</div>
+      <div class="portrait-school">Pra-Sokratik</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Heraclitus: Penderitaan sebagai Hukum Kosmik Perubahan</h3>
+      <p class="content-subtitle">Logos, Perubahan Abadi, dan Harmoni dalam Pertentangan</p>
+
+      <p>
+        Heraclitus dari Efesos, "sang filsuf yang menangis" dalam tradisi populer, adalah pemikir pra-Sokratik yang mengembangkan kosmologi paling radikal tentang perubahan dan pertentangan. Pandangannya tentang penderitaan tidak dapat dipisahkan dari pandangannya tentang alam semesta secara keseluruhan: semuanya mengalir (<em>panta rhei</em>), dan perubahan adalah hukum tertinggi realitas.
+      </p>
+
+      <p>
+        Bagi Heraclitus, penderitaan manusia lahir dari penolakan terhadap hakikat realitas yang selalu berubah. Manusia menderita karena mereka menginginkan kestabilan dalam dunia yang pada dasarnya tidak pernah stabil. Sungai yang "sama" tidak pernah benar-benar sama dua kali — air yang mengalir selalu berbeda, meski kita menyebutnya dengan nama yang sama. Begitu pula dengan segala sesuatu yang kita cintai, kita miliki, dan kita identifikasikan sebagai "milik kita."
+      </p>
+
+      <div class="pullquote">
+        <p>Sungai yang sama tidak dapat Anda masuki dua kali, karena air yang baru selalu mengalir ke hadapan Anda.</p>
+        <cite>Heraclitus, fragmen DK 12</cite>
+      </div>
+
+      <p>
+        Konsep <em>Logos</em> dalam pemikiran Heraclitus adalah prinsip rasional universal yang mengatur semua perubahan. Penderitaan timbul ketika manusia hidup seolah-olah mereka terpisah dari Logos ini — menuruti nafsu pribadi yang sempit, melihat dunia hanya dari perspektif sendiri yang terbatas, dan gagal memahami bahwa pertentangan (<em>polemos</em>) adalah ayah dari segala sesuatu.
+      </p>
+
+      <p>
+        Pandangan Heraclitus tentang harmoni dalam pertentangan (<em>enantiodromia</em>) sangat relevan untuk pemahaman penderitaan: tanpa rasa sakit, kita tidak bisa menghargai kesenangan; tanpa penyakit, kita tidak tahu apa itu kesehatan; tanpa kematian, kehidupan kehilangan maknanya. Penderitaan bukan anomali kosmik yang harus dihapuskan — ia adalah komponen struktural dari realitas yang dinamis. Menolaknya secara total adalah menolak realitas itu sendiri.
+      </p>
+
+      <div class="concept-tags">
+        <span class="tag">Panta Rhei</span>
+        <span class="tag">Logos</span>
+        <span class="tag">Polemos</span>
+        <span class="tag">Enantiodromia</span>
+        <span class="tag">Harmoni Tersembunyi</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. PYRRHO & SKEPTIK -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Ψ</div>
+      <div class="portrait-name">Pyrrho dari Elis</div>
+      <div class="portrait-era">360 – 270 SM · Elis</div>
+      <div class="portrait-school">Skeptisisme</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Pyrrho dan Skeptisisme: Penderitaan Melalui Penilaian Berlebihan</h3>
+      <p class="content-subtitle">Epoché — Penangguhan Penilaian sebagai Jalan Menuju Ataraxia</p>
+
+      <p>
+        Pyrrho dari Elis mendirikan mazhab skeptisisme (Pyrrhonisme) berdasarkan pengamatan sederhana namun mengejutkan: manusia menderita bukan karena kenyataan itu sendiri, melainkan karena mereka terlalu terburu-buru memberikan penilaian tentang kenyataan. Kita menjuluki sesuatu "baik" atau "buruk," "menyenangkan" atau "menyakitkan," "adil" atau "tidak adil" — padahal kita tidak memiliki pengetahuan yang cukup untuk membuat penilaian tersebut dengan pasti.
+      </p>
+
+      <p>
+        Solusi Pyrrho adalah <em>epoché</em> — penangguhan penilaian. Alih-alih memutuskan bahwa suatu kejadian itu baik atau buruk, kita menangguhkan penilaian dan membiarkan pikiran beristirahat dalam keadaan tidak-memutuskan. Paradoksnya, dari penangguhan penilaian ini muncul <em>ataraxia</em> — ketenangan jiwa yang sama persis dengan yang dicari Epikuros, namun ditempuh melalui jalan yang berlawanan: bukan dengan memilih kesenangan yang tepat, melainkan dengan menolak untuk memberikan penilaian berlebihan atas segala sesuatu.
+      </p>
+
+      <div class="pullquote">
+        <p>Penangguhan penilaian mengikuti kita seperti bayangan, dan bersama dengan penangguhan itu, ketenangan jiwa.</p>
+        <cite>Sextus Empiricus, mengutip tradisi Pyrrho</cite>
+      </div>
+
+      <p>
+        Skeptisisme Akademik yang kemudian dikembangkan oleh Arcesilaus dan Karneades di Akademi Platonis membawa tradisi ini lebih jauh: bahkan penilaian bahwa "penderitaan itu buruk" harus dipertanyakan. Dengan mempertanyakan penilaian-penilaian yang paling mendasar, jiwa dibebaskan dari cengkeraman emosi yang berlebihan.
+      </p>
+
+      <div class="concept-tags">
+        <span class="tag">Epoché</span>
+        <span class="tag">Ataraxia</span>
+        <span class="tag">Aphasia</span>
+        <span class="tag">Isostheneia</span>
+        <span class="tag">Adoxastos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. DIOGENES -->
+<div class="philosopher-section fade-in">
+  <div class="philosopher-inner">
+    <div class="philosopher-portrait">
+      <div class="portrait-frame">Δ</div>
+      <div class="portrait-name">Diogenes dari Sinope</div>
+      <div class="portrait-era">412 – 323 SM · Sinope</div>
+      <div class="portrait-school">Sinisme</div>
+    </div>
+    <div class="philosopher-content">
+      <h3>Diogenes dan Kaum Sinis: Penderitaan sebagai Produk Konvensi Sosial</h3>
+      <p class="content-subtitle">Hidup Sesuai Alam, Menolak Ikatan Budaya yang Palsu</p>
+
+      <p>
+        Diogenes dari Sinope — yang dikenal sebagai "Anjing" (<em>Kyon</em>), hidup dalam tong, dan ketika ditanya oleh Aleksander Agung apa yang diinginkannya menjawab "menyingkir dari mataharimu" — adalah radikalis terbesar dalam tradisi filsafat kuno. Baginya, penderitaan manusia adalah produk langsung dari konvensi sosial (<em>nomos</em>) yang menciptakan kebutuhan-kebutuhan palsu dan rasa malu yang tidak perlu.
+      </p>
+
+      <p>
+        Kaum Sinis memandang peradaban itu sendiri sebagai penyebab utama penderitaan. Ambisi, harta benda, status sosial, norma kesopanan yang berlebihan, ikatan pada negara dan keluarga — semua ini adalah konstruksi buatan manusia yang memperbudak jiwa. Satu-satunya jalan menuju kebebasan dari penderitaan adalah hidup sesuai alam (<em>kata phusin zen</em>) seperti hewan yang tidak terbelenggu oleh ekspektasi sosial.
+      </p>
+
+      <div class="pullquote">
+        <p>Manusia menderita karena mereka menginginkan hal-hal yang tidak perlu dan takut pada hal-hal yang tidak berbahaya.</p>
+        <cite>Diogenes dari Sinope, dalam catatan Diogenes Laertius</cite>
+      </div>
+
+      <p>
+        Proyek filosofis Diogenes adalah <em>parakharagma ton nomisma</em> — "memalsukan koin", dalam arti kiasan: mengikis nilai-nilai sosial yang diterima begitu saja untuk mengungkap nilainya yang palsu. Dengan cara hidup yang ekstrem — tidur di mana saja, makan apa saja, tidak mempunyai harta, dan secara sengaja melanggar norma-norma kesopanan — ia mendemonstrasikan bahwa kebutuhan yang dianggap esensial oleh masyarakat sesungguhnya tidak esensial sama sekali, dan bahwa banyak penderitaan manusia adalah penderitaan yang diciptakan sendiri melalui internalisasi nilai-nilai sosial yang keliru.
+      </p>
+
+      <div class="concept-tags">
+        <span class="tag">Kynismos</span>
+        <span class="tag">Kata Phusin</span>
+        <span class="tag">Autarkeia</span>
+        <span class="tag">Askesis</span>
+        <span class="tag">Kosmopolites</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIRAN FILSAFAT -->
+<div id="aliran" class="greek-divider"><span class="greek-ornament">⊕ ✦ ⊕</span></div>
+
+<div style="padding: 4rem 2rem;">
+  <div class="section-header fade-in">
+    <h2>Empat Mazhab Besar tentang Penderitaan</h2>
+    <p>Peta besar tradisi filsafat kuno dan posisi masing-masing terhadap penderitaan manusia</p>
+  </div>
+
+  <div class="schools-grid fade-in">
+    <div class="school-card stoic">
+      <div class="school-name">Stoikisme</div>
+      <h3>Penderitaan adalah Kesalahan Penilaian</h3>
+      <p>Peristiwa eksternal bersifat netral. Hanya penilaian keliru kita yang mengubahnya menjadi penderitaan. Kendali atas pikiran adalah kebebasan tertinggi.</p>
+      <ul class="school-tenets">
+        <li>Dikotomi kendali: dalam dan luar</li>
+        <li>Emosi irasional adalah penyakit jiwa</li>
+        <li>Kebajikan adalah satu-satunya kebaikan sejati</li>
+        <li>Hidup selaras dengan Logos universal</li>
+        <li>Setiap manusia adalah warga semesta</li>
+      </ul>
+    </div>
+
+    <div class="school-card epicurean">
+      <div class="school-name">Epikureanisme</div>
+      <h3>Penderitaan dari Keinginan yang Keliru</h3>
+      <p>Penderitaan lahir dari mengejar kenikmatan yang salah jenis dan ketakutan yang tidak berdasar. Ataraxia dicapai melalui kesederhanaan dan persahabatan.</p>
+      <ul class="school-tenets">
+        <li>Bedakan nafsu perlu dari nafsu kosong</li>
+        <li>Ataraxia: ketenangan jiwa sebagai tujuan</li>
+        <li>Hapuskan ketakutan pada dewa dan mati</li>
+        <li>Persahabatan sejati adalah obat terbaik</li>
+        <li>Hidup sederhana dan jauh dari politik</li>
+      </ul>
+    </div>
+
+    <div class="school-card platonic">
+      <div class="school-name">Platonisme</div>
+      <h3>Penderitaan sebagai Kondisi Ontologis</h3>
+      <p>Jiwa yang terjebak dalam tubuh dan dunia material secara kodrati menderita. Pembebasan hanya melalui filsafat dan orientasi pada dunia Forma yang kekal.</p>
+      <ul class="school-tenets">
+        <li>Tubuh adalah penjara jiwa</li>
+        <li>Dunia material adalah bayangan palsu</li>
+        <li>Filsafat sebagai latihan kematian</li>
+        <li>Nafsu dan hasrat tubuh mengrantai jiwa</li>
+        <li>Pengetahuan sejati membebaskan dari penderitaan</li>
+      </ul>
+    </div>
+
+    <div class="school-card skeptic">
+      <div class="school-name">Pyrrhonisme</div>
+      <h3>Penderitaan dari Penilaian Berlebihan</h3>
+      <p>Penilaian terlalu cepat tentang baik-buruk menciptakan penderitaan. Penangguhan penilaian (epoché) menghasilkan ketenangan jiwa yang paradoksal.</p>
+      <ul class="school-tenets">
+        <li>Epoché: tangguhkan semua penilaian</li>
+        <li>Tidak ada pengetahuan yang pasti</li>
+        <li>Ketenangan muncul dari tidak-memutuskan</li>
+        <li>Ikuti penampakan, bukan doktrin</li>
+        <li>Pertanyaan adalah lebih sehat dari kepastian</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div id="timeline" class="timeline-section fade-in">
+  <div class="timeline-inner">
+    <div class="section-header">
+      <h2>Kronologi Pemikiran tentang Penderitaan</h2>
+      <p>Dari Heraclitus hingga Marcus Aurelius — tujuh abad pencarian jawaban</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±535 SM</div>
+        <div class="timeline-title">Heraclitus — Panta Rhei</div>
+        <div class="timeline-body">Penderitaan sebagai konsekuensi menolak perubahan kosmik yang abadi. Logos sebagai prinsip yang mengatur semua pertentangan, termasuk rasa sakit dan kesenangan.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±470 SM</div>
+        <div class="timeline-title">Socrates — Penderitaan adalah Ketidaktahuan</div>
+        <div class="timeline-body">Tidak ada yang berbuat jahat secara sukarela. Semua penderitaan moral berakar pada ketidaktahuan tentang kebaikan sejati. Pemeriksaan diri sebagai obat utama.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±428 SM</div>
+        <div class="timeline-title">Plato — Jiwa Terjebak dalam Gua</div>
+        <div class="timeline-body">Dualisme jiwa-tubuh: penderitaan adalah kondisi bawaan jiwa yang terperangkap materi. Alegori Gua menggambarkan penderitaan epistemologis manusia yang hidup dalam ilusi.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±412 SM</div>
+        <div class="timeline-title">Diogenes — Penderitaan dari Konvensi Sosial</div>
+        <div class="timeline-body">Peradaban dan nilai-nilai sosial yang dipaksakan adalah sumber penderitaan. Hidup sesuai alam secara radikal sebagai satu-satunya kebebasan.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±384 SM</div>
+        <div class="timeline-title">Aristoteles — Mesotes dan Eudaimonia</div>
+        <div class="timeline-body">Penderitaan adalah absennya kehidupan yang berkembang sempurna. Jalan tengah antara ekstrem, persahabatan sejati, dan emosi yang proporsional sebagai kunci bebas dari penderitaan.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±360 SM</div>
+        <div class="timeline-title">Pyrrho — Epoché sebagai Terapi</div>
+        <div class="timeline-body">Penangguhan penilaian tentang baik-buruk menghasilkan ataraxia. Penderitaan adalah buah dari terlalu terburu-buru menjuluki sesuatu sebagai "menyakitkan."</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±341 SM</div>
+        <div class="timeline-title">Epikuros — Tetrapharmakos</div>
+        <div class="timeline-body">"Empat Obat" Epikuros: tidak perlu takut dewa, tidak perlu takut mati, kebaikan mudah dicapai, kejahatan mudah ditanggung. Ataraxia melalui kesederhanaan dan persahabatan.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±300 SM</div>
+        <div class="timeline-title">Zeno dari Citium — Fondasi Stoikisme</div>
+        <div class="timeline-body">Mendirikan mazhab Stoa di Athena. Penderitaan berasal dari pathe — emosi irasional yang tidak sesuai dengan Logos. Kebajikan sebagai satu-satunya kebaikan sejati.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±4 SM</div>
+        <div class="timeline-title">Seneca — Epistulae Morales</div>
+        <div class="timeline-body">Praemeditatio malorum sebagai vaksin penderitaan. Waktu adalah harta yang paling langka — penderitaan dari hidup yang tidak digunakan dengan penuh kesadaran.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">±50 M</div>
+        <div class="timeline-title">Epictetus — Enchiridion</div>
+        <div class="timeline-body">Mantan budak yang membuktikan dengan hidupnya: kebebasan jiwa tidak bergantung pada kondisi eksternal. Penderitaan adalah selalu produk dari menginginkan yang tidak ada dalam kendali kita.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">121 M</div>
+        <div class="timeline-title">Marcus Aurelius — Meditations</div>
+        <div class="timeline-body">Kaisar-filsuf yang berjuang setiap hari melawan penderitaan di tengah kekaisaran yang bergolak. Catatan pribadinya menjadi panduan paling manusiawi tentang menghadapi penderitaan dengan bermartabat.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERBANDINGAN -->
+<div id="perbandingan" class="greek-divider"><span class="greek-ornament">⊕ ✦ ⊕</span></div>
+
+<div style="padding: 4rem 2rem;">
+  <div class="section-header fade-in">
+    <h2>Tabel Perbandingan Pandangan Filsuf</h2>
+    <p>Ringkasan komparatif akar, wujud, dan solusi penderitaan menurut setiap filsuf</p>
+  </div>
+
+  <div class="compare-wrap fade-in">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Filsuf</th>
+          <th>Akar Penderitaan</th>
+          <th>Wujud Utama</th>
+          <th>Solusi yang Ditawarkan</th>
+          <th>Tujuan Akhir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Socrates</td>
+          <td>Ketidaktahuan (agnoia) tentang kebaikan sejati</td>
+          <td>Hidup tanpa pemeriksaan diri, jiwa yang sakit</td>
+          <td>Dialog, elenchus, pemeriksaan diri terus-menerus</td>
+          <td>Kebijaksanaan (sophia) dan jiwa yang sehat</td>
+        </tr>
+        <tr>
+          <td>Plato</td>
+          <td>Jiwa terjebak dalam tubuh dan dunia material</td>
+          <td>Perbudakan nafsu, hidup dalam ilusi bayangan</td>
+          <td>Filsafat sebagai latihan kematian dan pembebasan jiwa</td>
+          <td>Kontemplasi Forma ideal yang kekal</td>
+        </tr>
+        <tr>
+          <td>Aristoteles</td>
+          <td>Hidup di bawah potensi kodrat manusiawi</td>
+          <td>Karakter cacat, emosi tak proporsional, isolasi sosial</td>
+          <td>Latihan kebajikan, jalan tengah, persahabatan sejati</td>
+          <td>Eudaimonia — kehidupan yang berkembang sempurna</td>
+        </tr>
+        <tr>
+          <td>Epikuros</td>
+          <td>Nafsu yang keliru dan ketakutan yang tidak perlu</td>
+          <td>Mengejar kekayaan, status, dan kesenangan keliru</td>
+          <td>Kesederhanaan, komunitas, hapuskan ketakutan kosmologis</td>
+          <td>Ataraxia dan aponia — damai jiwa dan bebas dari sakit</td>
+        </tr>
+        <tr>
+          <td>Stoikisme</td>
+          <td>Penilaian keliru tentang hal-hal di luar kendali kita</td>
+          <td>Emosi irasional (pathe) yang mengacaukan jiwa</td>
+          <td>Latihan penilaian, dikotomi kendali, meditasi negatif</td>
+          <td>Apatheia — kedamaian yang tidak tergoyahkan</td>
+        </tr>
+        <tr>
+          <td>Heraclitus</td>
+          <td>Menolak hakikat perubahan kosmik yang abadi</td>
+          <td>Hidup bertentangan dengan Logos universal</td>
+          <td>Menerima dan memahami hukum perubahan kosmik</td>
+          <td>Hidup selaras dengan Logos</td>
+        </tr>
+        <tr>
+          <td>Pyrrho</td>
+          <td>Penilaian berlebihan dan prematur atas realitas</td>
+          <td>Doktrin kaku yang menciptakan ikatan emosional palsu</td>
+          <td>Epoché — penangguhan penilaian tentang baik-buruk</td>
+          <td>Ataraxia melalui keraguan yang teratur</td>
+        </tr>
+        <tr>
+          <td>Diogenes</td>
+          <td>Konvensi sosial dan nilai-nilai budaya yang palsu</td>
+          <td>Ikatan pada status, harta, dan norma yang tidak perlu</td>
+          <td>Hidup sesuai alam, lepaskan semua kebutuhan buatan</td>
+          <td>Autarkeia — kemandirian jiwa yang sempurna</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ISTILAH YUNANI -->
+<div id="istilah" class="greek-divider"><span class="greek-ornament">⊕ ✦ ⊕</span></div>
+
+<div style="padding: 4rem 2rem; max-width: 1100px; margin: 0 auto;">
+  <div class="section-header fade-in">
+    <h2>Kosakata Yunani Kunci tentang Penderitaan</h2>
+    <p>Istilah-istilah teknis yang membentuk pemikiran filsafat kuno tentang kesengsaraan dan pembebasan</p>
+  </div>
+
+  <div class="terms-grid fade-in">
+    <div class="term-card">
+      <span class="term-greek">Pathos</span>
+      <span class="term-latin">Πάθος · Passion / Suffering</span>
+      <p class="term-def">Perasaan, emosi, atau penderitaan. Dalam konteks Stoik, merujuk pada emosi irasional yang merupakan gangguan jiwa.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Ataraxia</span>
+      <span class="term-latin">Ἀταραξία · Tranquility</span>
+      <p class="term-def">Ketenangan jiwa yang bebas dari gangguan dan kecemasan. Tujuan tertinggi Epikureanisme dan Pyrrhonisme.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Lype</span>
+      <span class="term-latin">Λύπη · Grief / Distress</span>
+      <p class="term-def">Kesedihan, duka, atau tekanan batin. Salah satu dari empat pathe utama yang diidentifikasi kaum Stoa sebagai irasional.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Eudaimonia</span>
+      <span class="term-latin">Εὐδαιμονία · Flourishing</span>
+      <p class="term-def">Kehidupan yang berkembang sempurna. Aristoteles memandang ini sebagai lawan dari penderitaan yang mendalam.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Apatheia</span>
+      <span class="term-latin">Ἀπάθεια · Equanimity</span>
+      <p class="term-def">Bukan "apati" dalam arti modern, melainkan keadaan bebas dari pathe irasional. Tujuan tertinggi Stoikisme.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Epoché</span>
+      <span class="term-latin">Ἐποχή · Suspension</span>
+      <p class="term-def">Penangguhan penilaian. Dalam Pyrrhonisme, senjata utama melawan penderitaan yang lahir dari keyakinan prematur.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Agnoia</span>
+      <span class="term-latin">Ἄγνοια · Ignorance</span>
+      <p class="term-def">Ketidaktahuan moral. Bagi Socrates dan Plato, ini adalah akar dari seluruh penderitaan dan kejahatan manusia.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Prohairesis</span>
+      <span class="term-latin">Προαίρεσις · Will / Choice</span>
+      <p class="term-def">Kehendak rasional, kemampuan pilih. Bagi Epictetus, satu-satunya hal yang benar-benar "milik kita" dan tak dapat dirampas.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Aponia</span>
+      <span class="term-latin">Ἀπονία · Painlessness</span>
+      <p class="term-def">Bebas dari rasa sakit fisik. Bagi Epikuros, ini adalah komponen esensial dari kebahagiaan sejati bersama ataraxia.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Logos</span>
+      <span class="term-latin">Λόγος · Reason / Word</span>
+      <p class="term-def">Prinsip rasional kosmik yang mengatur alam semesta. Hidup selaras dengan Logos adalah jalan Stoik dari penderitaan menuju kedamaian.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Mesotes</span>
+      <span class="term-latin">Μεσότης · Mean / Middle</span>
+      <p class="term-def">Doktrin jalan tengah Aristoteles. Kebajikan adalah titik tengah antara dua ekstrem yang masing-masing adalah sumber penderitaan.</p>
+    </div>
+    <div class="term-card">
+      <span class="term-greek">Epithymia</span>
+      <span class="term-latin">Ἐπιθυμία · Desire / Craving</span>
+      <p class="term-def">Hasrat dan nafsu. Bagi Plato, nafsu yang tak terkendali adalah "kuda liar" yang menyeret jiwa menuju penderitaan.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING ESSAY -->
+<div class="essay-section fade-in">
+  <h2>Relevansi bagi Kita, Kini</h2>
+
+  <p>
+    Ribuan tahun memisahkan kita dari para pemikir besar ini, namun penderitaan manusia tidak banyak berubah dalam bentuknya yang paling dalam. Kita masih takut kehilangan orang yang kita cintai. Kita masih mengejar pengakuan, kekayaan, dan status yang tidak pernah benar-benar memuaskan. Kita masih berjuang dengan kecemasan tentang hal-hal yang berada di luar kendali kita, dan masih menderita karena ilusi bahwa kita tahu apa yang terbaik bagi diri sendiri.
+  </p>
+
+  <p>
+    Yang luar biasa adalah bahwa setiap tradisi filsafat kuno ini memiliki proyeksi kontemporer yang kuat. Stoikisme menjadi fondasi intelektual Terapi Kognitif-Perilaku (CBT) — salah satu pendekatan psikoterapeutik yang paling tervalidasi secara ilmiah. Ketika terapis CBT meminta pasiennya mengidentifikasi "distorsi kognitif" yang mengubah peristiwa netral menjadi sumber kecemasan, mereka pada dasarnya mengajarkan versi modern dari ajaran Epictetus tentang dikotomi kendali.
+  </p>
+
+  <p>
+    Epikureanisme bergema dalam penelitian kontemporer tentang kebahagiaan yang secara konsisten menunjukkan bahwa kekayaan, ketenaran, dan kemewahan memiliki dampak yang jauh lebih kecil terhadap kebahagiaan jangka panjang dibanding kualitas hubungan sosial, rasa bermakna, dan penerimaan diri. Taksonomi keinginan Epikuros — membedakan apa yang benar-benar dibutuhkan dari apa yang sekadar diinginkan karena tekanan budaya — menjadi panduan yang sangat relevan di era konsumerisme dan media sosial.
+  </p>
+
+  <p>
+    Pemikiran Aristoteles tentang <em>eudaimonia</em> dan jalan tengah menemukan ekspresinya dalam psikologi positif modern, terutama dalam konsep "flow" Mihaly Csikszentmihalyi dan "flourishing" Martin Seligman. Dan gagasan Socrates bahwa hidup yang tidak diperiksa tidak layak dijalani menjadi semakin relevan di era ketika kecepatan informasi dan distraksi digital mempersulit kita untuk berhenti sejenak dan bertanya: kehidupan macam apa yang sesungguhnya sedang kita jalani?
+  </p>
+
+  <p>
+    Para filsuf kuno tidak memberikan jawaban final yang seragam atas penderitaan manusia — dan mungkin justru itulah kekuatan mereka. Mereka memberikan peta-peta yang berbeda-beda, masing-masing menerangi sudut yang berbeda dari pengalaman manusia yang kaya dan kompleks ini. Penderitaan, dalam cahaya pandangan mereka, bukanlah tanda bahwa sesuatu yang salah menimpa kita — ia adalah bagian dari kondisi manusiawi yang perlu dipahami, dihadapi, dan dalam batas-batas tertentu, ditransformasikan.
+  </p>
+
+  <div class="pullquote" style="margin-top: 3rem;">
+    <p>Kita tidak memilih untuk lahir ke dunia ini dan mewarisi semua berat penderitaannya. Tetapi kita memiliki satu hal yang para dewa sekalipun tidak dapat mengambil dari kita: cara kita merespons apa yang terjadi pada kita.</p>
+    <cite>Diilhami dari tradisi Stoik dan Sokratik</cite>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Philosophia Antiqua</div>
+
+  <!-- LIVE VISITOR COUNTER -->
+  <div id="visitor-widget" style="margin:2rem auto 2.5rem;max-width:480px;border:1px solid rgba(201,168,76,0.2);padding:1.5rem 2rem;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent);"></div>
+    <div style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:1.25rem;text-align:center;">
+      ◆ &nbsp; Statistik Kunjungan &nbsp; ◆
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center;margin-bottom:1.25rem;">
+      <div>
+        <div id="stat-total" style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);line-height:1;">—</div>
+        <div style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-top:0.3rem;">Total Kunjungan</div>
+      </div>
+      <div>
+        <div id="stat-online" style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);line-height:1;">—</div>
+        <div style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-top:0.3rem;">Sedang Online</div>
+      </div>
+      <div>
+        <div id="stat-today" style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);line-height:1;">—</div>
+        <div style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;color:var(--stone);text-transform:uppercase;margin-top:0.3rem;">Hari Ini</div>
+      </div>
+    </div>
+    <!-- Live pulse bar -->
+    <div style="display:flex;align-items:center;gap:10px;justify-content:center;">
+      <div id="pulse-dot" style="width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse-glow 1.8s ease-in-out infinite;"></div>
+      <span id="live-label" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;color:var(--stone);text-transform:uppercase;">Memuat data kunjungan…</span>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent);"></div>
+  </div>
+
+  <!-- AUTHOR CREDIT -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;">
+    <div style="width:48px;height:48px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold);flex-shrink:0;">IA</div>
+    <div style="text-align:left;">
+      <div style="font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.15em;color:var(--gold-light);">Irfan Afandy</div>
+      <div style="font-family:'EB Garamond',serif;font-size:0.85rem;font-style:italic;color:var(--stone);">Penulis &amp; Peneliti Filsafat Kuno</div>
+    </div>
+  </div>
+
+  <p class="footer-body">
+    Sebuah penelusuran atas kearifan para pemikir besar dunia kuno dalam memahami penderitaan — dari Athena hingga Roma, dari abad ke-5 SM hingga abad ke-2 M.
+  </p>
+  <div class="footer-line">
+    <span>Sumber: Plato · Aristoteles · Epikuros · Epictetus · Seneca · Marcus Aurelius · Diogenes Laertius</span>
+  </div>
+  <div class="footer-line" style="margin-top: 0.75rem;">
+    <span style="font-family: 'Cinzel', serif; color: rgba(201,168,76,0.3); font-size: 0.65rem; letter-spacing: 0.2em;">«&nbsp;GNOTHI SEAUTON — KENALI DIRIMU SENDIRI&nbsp;»</span>
+  </div>
+</footer>
+
+<style>
+  @keyframes pulse-glow {
+    0%,100%{opacity:0.4;transform:scale(1);}
+    50%{opacity:1;transform:scale(1.35);}
+  }
+</style>
+
+<script>
+  // ── FADE-IN OBSERVER ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) a.style.color = 'var(--gold-light)';
+    });
+  });
+
+  // ── LIVE VISITOR COUNTER ──
+  (function() {
+    const KEY_TOTAL   = 'pa_total_visits';
+    const KEY_TODAY   = 'pa_today_visits';
+    const KEY_DATE    = 'pa_last_date';
+    const KEY_SESSION = 'pa_session_active';
+
+    const today = new Date().toISOString().slice(0,10);
+
+    // Read stored values
+    let total   = parseInt(localStorage.getItem(KEY_TOTAL)  || '0');
+    let todayV  = parseInt(localStorage.getItem(KEY_TODAY)  || '0');
+    let lastDate = localStorage.getItem(KEY_DATE) || '';
+
+    // Reset today counter if new day
+    if (lastDate !== today) {
+      todayV = 0;
+      localStorage.setItem(KEY_DATE, today);
+    }
+
+    // Count new visit (once per session)
+    const isNewSession = !sessionStorage.getItem(KEY_SESSION);
+    if (isNewSession) {
+      sessionStorage.setItem(KEY_SESSION, '1');
+      total  += 1;
+      todayV += 1;
+      localStorage.setItem(KEY_TOTAL, total);
+      localStorage.setItem(KEY_TODAY, todayV);
+    }
+
+    // Simulate "online" users: 1–5 based on recent activity + randomness
+    const recentBase = Math.min(todayV, 5);
+    let online = Math.max(1, recentBase + Math.floor(Math.random() * 3));
+
+    // Animate count-up
+    function animateCount(el, target, duration) {
+      const start = performance.now();
+      const startVal = 0;
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(startVal + (target - startVal) * ease).toLocaleString('id-ID');
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Display after short delay for drama
+    setTimeout(() => {
+      animateCount(document.getElementById('stat-total'),  total,  1200);
+      animateCount(document.getElementById('stat-today'),  todayV,  900);
+      animateCount(document.getElementById('stat-online'), online,  700);
+      document.getElementById('live-label').textContent = 'Live · Diperbarui setiap sesi';
+    }, 600);
+
+    // Gently fluctuate "online" count every 8s
+    setInterval(() => {
+      const delta = Math.random() > 0.5 ? 1 : -1;
+      online = Math.max(1, Math.min(online + delta, recentBase + 6));
+      const el = document.getElementById('stat-online');
+      if (el) el.textContent = online.toLocaleString('id-ID');
+    }, 8000);
+  })();
+</script>
+</body>
 </html>
